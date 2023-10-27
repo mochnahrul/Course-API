@@ -18,7 +18,6 @@ def create_app(config=DevelopmentConfig):
   db.init_app(app)
 
   from .resources import student_ns, course_ns
-
   api.add_namespace(student_ns)
   api.add_namespace(course_ns)
 
