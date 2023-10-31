@@ -7,7 +7,7 @@ from ..models import Student
 from ..api_models import student_response_model, student_model
 
 
-student_ns = Namespace("Student", path="/students", description="Operations about Student")
+student_ns = Namespace("Student", path="/student", description="Operations about Student")
 
 @student_ns.route("")
 class StudentList(Resource):
