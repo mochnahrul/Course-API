@@ -11,7 +11,7 @@ from ..utils import generate_response
 course_ns = Namespace("Course", path="/course", description="Operations about Course")
 
 @course_ns.route("")
-@course_ns.doc(responses={200: "OK", 201: "Created", 400: "Bad Request"})
+@course_ns.doc(responses={200: "OK", 201: "Created", 400: "Bad Request", 500: "Internal Server Error"})
 class CourseList(Resource):
   def get(self):
     """Get a list of all courses."""
@@ -37,7 +37,7 @@ class CourseList(Resource):
     return generate_response(201, "Course created successful", api.marshal(new_course, course_response_model)), 201
 
 @course_ns.route("/<int:id>")
-@course_ns.doc(responses={200: "OK", 204: "No Content", 400: "Bad Request", 404: "Not Found"}, params={"id": "Course ID"})
+@course_ns.doc(responses={200: "OK", 204: "No Content", 400: "Bad Request", 404: "Not Found", 500: "Internal Server Error"}, params={"id": "Course ID"})
 class CourseResource(Resource):
   def get(self, id):
     """Get course by ID."""
